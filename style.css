@@ -44,19 +44,36 @@ div.header-spacer {
 }
 
 div.hero {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 3em;
+    margin: 0 20px;
+    text-align: center;
+    height: calc(60vh - 200px);
+}
+
+div.after-hero {
     color: var(--text);
     font-weight: 700;
-    font-size: 5em;
+    font-size: 3em;
     margin: 0 20px;
     text-align: center;
 }
 
 @media screen and (max-width:600px) {
     header {
-        top: calc(50px - 40vh);
+        top: calc(80px - 40vh);
     }
 
     body {
         font-size: 12px;
+    }
+
+    div.header-spacer {
+        height: 100px;
+    }
+    
+    div.hero {
+        height: calc(60vh - 100px);
     }
 }

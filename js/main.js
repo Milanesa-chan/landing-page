@@ -7,13 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function crearAnimacion() {
-    let endPosition = (window.innerHeight * 0.4) - (window.innerWidth > 600 ? 100 : 50);
-    let scale = window.innerWidth > 600 ? 0.4 : 0.5;
+    let endPosition = (window.innerHeight * 0.4) - (window.innerWidth > 600 ? 100 : 40);
+    let scale = window.innerWidth > 600 ? 0.3 : 0.5;
+    let top = (window.innerHeight * 0.4) - (window.innerWidth > 600 ? 50 : 40);
     // Eliminar triggers antiguos para evitar duplicaciones
     ScrollTrigger.getAll().forEach(t => t.kill());
 
     gsap.to(".main-icon", {
-      scale: scale, // Reducir tamaño
+      scale: scale,
+      top: top,
+      transform: `translateY(-50%)`,
       scrollTrigger: {
         trigger: "body",
         start: "top",
