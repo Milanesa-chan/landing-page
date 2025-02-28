@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     crearAnimacion();
-
     window.addEventListener("resize", crearAnimacion);
+
+    setVH();
+    window.addEventListener('resize', setVH);
 });
 
 function crearAnimacion() {
@@ -14,17 +16,22 @@ function crearAnimacion() {
     ScrollTrigger.getAll().forEach(t => t.kill());
 
     gsap.to(".main-icon", {
-      scale: scale,
-      top: top,
-      transform: `translateY(-50%)`,
-      scrollTrigger: {
-        trigger: "body",
-        start: "top",
-        end: `+=${endPosition}`,
-        scrub: true,
-      }
+        scale: scale,
+        top: top,
+        transform: `translateY(-50%)`,
+        scrollTrigger: {
+            trigger: "body",
+            start: "top",
+            end: `+=${endPosition}`,
+            scrub: true,
+        }
     });
 
     // Refrescar ScrollTrigger después de actualizar
     ScrollTrigger.refresh();
+}
+
+// Ajustar --vh en función del tamaño real del viewport
+function setVH() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }

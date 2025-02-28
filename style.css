@@ -3,6 +3,8 @@
     --background : #22252C;
     --text: #EDF3FC;
     --shadow: #030303;
+
+    --vh: 1vh;
 }
 
 body {
@@ -13,14 +15,14 @@ body {
 
 header {
     background-color: var(--primary);
-    height : max(40vh, 100px);
+    height : max(calc(var(--vh, 1vh) * 40), 100px);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5em;
     color: var(--background);
     position: sticky;
-    top: calc(100px - 40vh);
+    top: calc(100px - calc(var(--vh, 1vh) * 40));
     box-shadow: 0 2px 10px var(--shadow);
 }
 
@@ -49,7 +51,7 @@ div.hero {
     font-size: 3em;
     margin: 0 20px;
     text-align: center;
-    height: calc(60vh - 200px);
+    height: calc(calc(var(--vh, 1vh) * 60) - 200px);
 }
 
 div.after-hero {
@@ -62,7 +64,7 @@ div.after-hero {
 
 @media screen and (max-width:600px) {
     header {
-        top: calc(80px - 40vh);
+        top: calc(80px - calc(var(--vh, 1vh) * 40));
     }
 
     body {
@@ -74,6 +76,6 @@ div.after-hero {
     }
     
     div.hero {
-        height: calc(60vh - 100px);
+        height: calc(calc(var(--vh, 1vh) * 60) - 100px);
     }
 }
