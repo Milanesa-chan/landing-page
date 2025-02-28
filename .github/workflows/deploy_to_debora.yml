@@ -1,0 +1,27 @@
+name: Deploy to Debora
+
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to server
+      run: |
+        ssh -o StrictHostKeyChecking=no devops@ssh.milanesa-chan.com << 'EOF'
+          cd /var/git/landing-page
+          git pull origin main
+          cp -r * /var/www/html/
+        EOF
