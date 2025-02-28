@@ -29,7 +29,6 @@ header {
 img.main-icon {
     position: absolute;
     top: 100%;
-    transform: translateY(-50%);
     width: 80%;
     max-width: 700px;
 }
