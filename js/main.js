@@ -20,9 +20,8 @@ function crearAnimacion() {
     let endPosition = (window.innerHeight * 0.4) - (window.innerWidth > 600 ? 100 : 80);
     let scale = window.innerWidth > 600 ? 0.3 : 0.5;
     let top = (window.innerHeight * 0.4) - (window.innerWidth > 600 ? 50 : 40) - ($mainIcon.height / 2);
-
-    console.log($header.offsetHeight);
-    console.log($mainIcon.offsetHeight);
+    let imageLayoutWidth = $mainIcon.width * scale;
+    
     let startingTop = $header.offsetHeight - ($mainIcon.offsetHeight / 2);
     // Eliminar triggers antiguos para evitar duplicaciones
     ScrollTrigger.getAll().forEach(t => t.kill());
@@ -40,11 +39,22 @@ function crearAnimacion() {
         }
     });
 
+
+    gsap.set(".nav-icon-spacer", { top: startingTop });
+
+    gsap.to(".nav-icon-spacer", {
+        width: imageLayoutWidth,
+        scrollTrigger: {
+            trigger: "body",
+            start: "top",
+            end: `+=${endPosition}`,
+            scrub: true,
+        }
+    });
+
+
     // Refrescar ScrollTrigger después de actualizar
     ScrollTrigger.refresh();
-
-    console.log("RESIZE");
-    
 }
 
 // Ajustar --vh en función del tamaño real del viewport

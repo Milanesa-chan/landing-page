@@ -5,12 +5,20 @@
     --shadow: #030303;
 
     --vh: 1vh;
+
+    --nav-menu-button: var(--background);
+    --nav-menu-button-hover: var(--text);
+
+
+    --primary-l : #fab3ff;
+    --primary-d : #ac25b6;
 }
 
 body {
     background-color: var(--background);
     margin: 0;
     font-family: 'Roboto Mono', monospace;
+    padding-bottom: 7em;
 }
 
 header {
@@ -18,12 +26,42 @@ header {
     height : max(calc(var(--vh, 1vh) * 40), 100px);
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 5em;
+    align-items: flex-start;
+    font-size: 2em;
+    font-weight: 500;
     color: var(--background);
     position: sticky;
     top: calc(100px - calc(var(--vh, 1vh) * 40));
     box-shadow: 0 2px 10px var(--shadow);
+}
+
+div.nav-container {
+    position: sticky;
+    top: 0;
+    display: flex;
+    padding: 0.8em;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+a.nav-button {
+    color: var(--nav-menu-button);
+    cursor: pointer;
+    transition: color 140ms ease;
+    width: 10ch;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+a.nav-button:hover {
+    color: var(--nav-menu-button-hover);
+}
+
+div.nav-icon-spacer {
+    width: 0;
 }
 
 img.main-icon {
@@ -31,12 +69,13 @@ img.main-icon {
     top: 100%;
     width: 80%;
     max-width: 700px;
+    pointer-events: none;
 }
 
 div.main-content {
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -56,9 +95,13 @@ div.hero {
 div.after-hero {
     color: var(--text);
     font-weight: 700;
-    font-size: 3em;
+    font-size: 2em;
     margin: 0 20px;
     text-align: center;
+}
+
+.p {
+    color: var(--primary)
 }
 
 @media screen and (max-width:600px) {
@@ -76,5 +119,16 @@ div.after-hero {
     
     div.hero {
         height: calc(calc(var(--vh, 1vh) * 60) - 100px);
+    }
+
+    div.nav-container {
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+        text-align: center;
+    }
+
+    a.nav-button {
+        width: 100%;
     }
 }
