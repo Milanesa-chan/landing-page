@@ -1,9 +1,9 @@
-name: Deploy to Debora
+name: Deploy Test to Debora
 
 on:
   push:
       branches:
-        - main
+        - test
 
 jobs:
   deploy:
@@ -22,6 +22,6 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no devops@ssh.milanesa-chan.com << 'EOF'
           cd /var/git/landing-page
-          git pull origin main
+          git pull origin test
           cp -r * /var/www/html/
         EOF
